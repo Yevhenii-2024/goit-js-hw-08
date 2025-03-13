@@ -86,3 +86,14 @@ function foo(img) {
 }
 
 gallery.innerHTML = foo(images);
+
+gallery.addEventListener('click', event => {
+    event.preventDefault();
+    if (event.target.nodeName === 'IMG') {
+        const instance = basicLightbox.create(`
+	<img src="${event.target.dataset.source}" alt="${event.target.alt}"/>
+`)
+        instance.show();
+    }
+    
+});
